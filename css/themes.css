@@ -1,0 +1,68 @@
+/* ============================================================
+   themes.css — вкладка «Темы» (Стандарт, Сакура, Лесбийская).
+   Профиль:  .fr-<id> рамка · .bg-<id> фон · .nk-<id> ник · .ef-<id> эффект   (класс вешается на .pcard или .pvm)
+   Темы:     [data-th=<id>] — вешается на <html>, дизайн-правила пишутся как html[data-th=<id>] …
+   Цвета тем задаются в js/app.js (массив SHT). Всё остальное — тут.
+   ============================================================ */
+
+/* ---------- подвкладки магазина: теперь их 5, шрифт чуть меньше ---------- */
+#th{overflow-y:auto;touch-action:pan-y}
+#th>*{flex:none}
+.seg.sub.nv>button{font-size:.6rem;letter-spacing:-.01em;padding:0}
+
+/* ---------- плитки товаров ---------- */
+.pst,.pvc,.tgc{margin-bottom:.9rem}
+.pvc p{margin-top:.7rem;text-align:center;font-size:.85rem}
+.pig,.thg{display:grid;grid-template-columns:1fr 1fr;gap:.8rem .7rem}
+.pit,.thc{display:flex;flex-direction:column;gap:.45rem;min-width:0}
+.pnm{font:800 .78rem/1.1 Unbounded,sans-serif;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.thc small{display:block;margin-top:-.25rem;text-align:center;font:700 .68rem Onest,sans-serif;color:var(--tx3)}
+.thc.prem .pnm{color:var(--ac2)}
+.pbt{width:100%;min-height:2.4rem;padding:0 .5rem;font-size:.68rem;gap:.3rem}
+.pbt .ci{width:1.35rem;height:1.35rem}
+.pbt.on{background:rgba(var(--ac-rgb),.14);color:var(--ac2);border-color:rgba(var(--ac-rgb),.4)}
+.pcf .pvm,.pcf .thp{margin-bottom:.8rem}
+.pcf p{margin-bottom:.2rem}
+.pcf .pcn{width:100%;margin-top:.6rem}
+
+/* ---------- мини-карточка профиля (превью товара) ---------- */
+.pcard,.pvm{--fin:linear-gradient(180deg,rgba(var(--bg2-rgb),.95),rgba(var(--bg1-rgb),.92) 46%,rgba(var(--bg0-rgb),.98))}
+.pvm{position:relative;height:7.2rem;border-radius:1.3rem;overflow:hidden;border:1px solid var(--line2);background:var(--fin)}
+.pvm.big{height:11.5rem;border-radius:1.8rem}
+.pvm .pn{position:absolute;left:.5rem;right:.5rem;top:.55rem;z-index:1;text-align:center;font:900 1.05rem/1 Unbounded,sans-serif;white-space:nowrap;overflow:hidden;color:rgba(var(--ac-rgb),.07);-webkit-text-stroke:1px rgba(var(--ac2-rgb),.45)}
+.pvm.big .pn{font-size:1.9rem;top:1rem}
+.pvm .pvi{position:absolute;z-index:2;left:50%;bottom:0;height:72%;width:auto;max-width:80%;transform:translateX(-50%);object-fit:contain;object-position:center bottom;filter:drop-shadow(0 .5rem .6rem rgba(0,0,0,.4))}
+.pvm.big .pvi{height:76%}
+
+
+
+/* ---------- превью темы: самостоятельная мини-вёрстка, цвета берёт из своих --*-rgb (их выставляет JS) ---------- */
+.thp{--ac:rgb(var(--ac-rgb));--ac2:rgb(var(--ac2-rgb));--ac3:rgb(var(--ac3-rgb));--bg0:rgb(var(--bg0-rgb));--bg1:rgb(var(--bg1-rgb));--bg2:rgb(var(--bg2-rgb));--ink:rgb(var(--ink-rgb));
+ --tx2:rgba(var(--ac2-rgb),.72);--line:rgba(var(--ac2-rgb),.15);--line2:rgba(var(--ac2-rgb),.28);--glass2:rgba(var(--bg0-rgb),.5);
+ position:relative;height:8.4rem;padding:.6rem;border-radius:1.3rem;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--line2);
+ background:radial-gradient(120% 70% at 50% -10%,rgba(var(--bg2-rgb),.95),rgba(var(--bg2-rgb),0) 70%),linear-gradient(180deg,var(--bg1),var(--bg0))}
+.thp.auto::before{content:"";position:absolute;left:0;right:0;top:0;height:.22rem;background:linear-gradient(90deg,#ff5d5d,#ffb347,#ffe14d,#4dff9a,#4dd2ff,#7a6dff,#ff5dd0)}
+.thp-s{display:grid;grid-template-columns:repeat(3,1fr);gap:.25rem;padding:.2rem;border-radius:.9rem;background:var(--glass2);border:1px solid var(--line)}
+.thp-s i{display:block;height:.7rem;border-radius:.6rem;background:rgba(var(--ac2-rgb),.14)}
+.thp-s i.on{background:var(--ac)}
+.thp-k{height:2.1rem;padding:.4rem .55rem;border-radius:.9rem;display:flex;flex-direction:column;justify-content:center;gap:.3rem;background:linear-gradient(180deg,rgba(var(--bg2-rgb),.5),rgba(var(--bg1-rgb),.7));border:1px solid var(--line)}
+.thp-k b{display:block;height:.28rem;border-radius:.2rem;background:rgba(var(--ac2-rgb),.38)}
+.thp-k b+b{width:60%}
+.thp-p{height:1.9rem;border-radius:1rem;display:grid;place-items:center;font:900 .62rem Unbounded,sans-serif;color:var(--ink);background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(255,255,255,0) 55%),var(--ac)}
+/* характер дизайн-тем в превью */
+.thp[data-th=lesbi]::before{content:"";position:absolute;left:0;right:0;top:0;height:.22rem;background:var(--sf)}
+.thp[data-th=lesbi] :is(.thp-p,.thp-s i.on){background:linear-gradient(90deg,#ef7627,#ff9a56 45%,#d162a4)}
+
+/* =====================================================================
+   ДИЗАЙН-ТЕМЫ (меняют не только цвет). Всегда html[data-th=…].
+   Кнопки .off/.ok/.static не трогаем — у них своё «выключенное» оформление.
+   ===================================================================== */
+[data-th=lesbi]{--sf:linear-gradient(90deg,#d52d00,#ef7627 17%,#ff9a56 34%,#fff 50%,#d162a4 66%,#b55690 83%,#a30262)}
+
+
+/* ----- САПФО: закатный градиент оранжевый → розовый, тонкая полоска флага в доке, мягкое свечение ----- */
+html[data-th=lesbi] body{background:radial-gradient(120% 55% at 50% -6%,rgba(var(--bg2-rgb),.95),rgba(var(--bg2-rgb),0) 70%),radial-gradient(70% 40% at 92% 100%,rgba(239,118,39,.2),transparent 70%),linear-gradient(180deg,rgb(var(--bg1-rgb)) 0%,rgb(var(--bg0-rgb)) 78%)}
+html[data-th=lesbi] .play:not(.off):not(.ok):not(.static),html[data-th=lesbi] .seg-i{background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(255,255,255,0) 52%),linear-gradient(90deg,#ef7627,#ff9a56 45%,#d162a4)}
+html[data-th=lesbi] #dock::before{content:"";position:absolute;left:1.8rem;right:1.8rem;top:0;height:.16rem;border-radius:0 0 .2rem .2rem;background:var(--sf);opacity:.9}
+html[data-th=lesbi] .sname h1{background:linear-gradient(90deg,#ff9a56,#fff 50%,#e87cb8);-webkit-background-clip:text;background-clip:text;color:transparent}
+html[data-th=lesbi] :is(.card,.showcase){border-color:rgba(255,154,86,.22)}

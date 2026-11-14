@@ -1,0 +1,67 @@
+/* v10: ПК-колонка, подарки, «орёл или решка», тема Сакура */
+canvas{left:50%;right:auto;width:min(100vw,calc(100dvh*.6));transform:translateX(-50%)}
+#gh{left:calc(50% - min(100vw,calc(100dvh*.6))/2)}
+/* подарки */
+.gfin{display:block;width:100%;height:3rem;margin:0 0 .6rem;padding:0 1rem;border-radius:1.2rem;border:1px solid var(--line2);background:rgba(var(--bg0-rgb),.55);color:var(--tx);font:700 .95rem Onest,sans-serif;outline:0;-moz-appearance:textfield}
+.gfin:focus{border-color:var(--ac)}
+.gfin::-webkit-outer-spin-button,.gfin::-webkit-inner-spin-button{-webkit-appearance:none}
+.gfmsg{margin:.7rem 0 0;padding:.7rem .9rem;border-radius:1.1rem;background:var(--glass);border:1px solid var(--line);font:600 .85rem/1.3 Onest,sans-serif;color:var(--tx2);text-align:left;overflow-wrap:anywhere}
+.gfmsg b{color:var(--ac2)}
+/* орёл или решка (по макету) */
+.cz-hd{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.2rem .2rem 0}
+.cz-hd small{display:block;font:800 .6rem Onest,sans-serif;letter-spacing:.22em;color:var(--tx3)}
+.cz-hd h1{margin:.3rem 0 0;font:800 1.55rem/1.1 Onest,sans-serif;letter-spacing:-.01em}
+.cz-wh{width:min(66vw,34dvh,17rem);margin:1.5rem auto 1.1rem}
+.cz-f::before{border:1px solid rgba(255,255,255,.3)}
+.cz-f .cz-tx{font-size:17cqw}
+.cz-dots{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-bottom:1.5rem}
+.cz-dots i{width:.55rem;height:.55rem;border-radius:50%;background:rgba(var(--ac2-rgb),.16)}
+.cz-dots i.co{background:var(--ac)}.cz-dots i.cp{background:rgba(var(--ac2-rgb),.5)}
+.cz-dots small{margin-left:.7rem;font:700 .75rem Onest,sans-serif;color:var(--tx3)}
+.cz2{display:grid;gap:1.1rem}
+.cz-sg{position:relative;display:grid;grid-template-columns:1fr 1fr;padding:.35rem;border-radius:2rem;background:rgba(var(--bg0-rgb),.7);border:1px solid var(--line)}
+.cz-sg>i{position:absolute;top:.35rem;bottom:.35rem;left:.35rem;width:calc(50% - .35rem);border-radius:1.7rem;background:rgb(var(--ac2-rgb));transform:translateX(calc(var(--i)*100%));transition:transform .45s var(--ease)}
+.cz-sg button{position:relative;height:3.3rem;display:flex;align-items:center;justify-content:center;gap:.45rem;color:var(--tx2);transition:color .3s}
+.cz-sg button.on{color:rgb(var(--bg0-rgb))}
+.cz-sg b{font:800 1rem Onest,sans-serif}.cz-sg em{font:700 .8rem Onest,sans-serif;font-style:normal;opacity:.6}
+.cz-br{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.cz-br>span{font:700 .9rem Onest,sans-serif;color:var(--tx3)}
+.cz-br>div{display:flex;gap:.2rem}
+.cz-br button{min-width:3.1rem;height:2.5rem;padding:0 .7rem;border-radius:1.4rem;border:1px solid transparent;font:800 .95rem Onest,sans-serif;color:var(--tx2);transition:all .3s}
+.cz-br button.on{border-color:var(--ac);color:var(--tx);background:rgba(var(--ac-rgb),.12)}
+.cz-br button.off{opacity:.3}
+.cz-go{display:flex;align-items:center;justify-content:space-between;height:4.4rem;padding:0 .75rem 0 1.6rem;border-radius:2.4rem;text-align:left}
+.cz-go b{font:800 1.05rem Onest,sans-serif}
+.cz-go u{display:grid;place-items:center;min-width:3.5rem;height:3rem;padding:0 .8rem;border-radius:1.6rem;background:rgba(0,0,0,.14);text-decoration:none;font:800 1rem Onest,sans-serif}
+/* ТЕМА «САКУРА»: градиент, розовые кнопки, ветка и лепестки (слой #sk из js/sakura.js) */
+html[data-th=sakura] body{background:radial-gradient(110% 48% at 50% -6%,rgba(var(--bg2-rgb),.95),rgba(var(--bg2-rgb),0) 72%),linear-gradient(180deg,rgb(var(--bg1-rgb)),rgb(var(--bg0-rgb)))}
+html[data-th=sakura] :is(.card,.showcase){border-color:rgba(var(--ac-rgb),.22)}
+html[data-th=sakura] .play:not(.off):not(.ok):not(.static),html[data-th=sakura] .seg-i{background:linear-gradient(180deg,#ffd3e3,#eb93b4);box-shadow:0 .8rem 1.8rem -.7rem rgba(var(--ac-rgb),.7),inset 0 1px 0 rgba(255,255,255,.65)}
+html[data-th=sakura] .sname h1{text-shadow:0 .1rem 1.2rem rgba(var(--ac-rgb),.35)}
+#sk{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;display:none}
+html[data-th=sakura] #sk{display:block}
+#sk.hid{display:none!important}
+#sk .br{position:absolute;right:-4%;top:2%;width:64%;opacity:0;transition:opacity .6s}
+body:has(#m.on) #sk .br{opacity:.95}
+#sk .pt{position:absolute;top:-6%;width:var(--s);height:calc(var(--s)*.7);border-radius:150% 0 150% 0;background:linear-gradient(135deg,#ffd9e6,#e58ab0);animation:skf var(--d) linear var(--l) infinite}
+@keyframes skf{0%{opacity:0;transform:translate3d(0,0,0) rotate(0)}8%{opacity:.85}50%{transform:translate3d(var(--x),55dvh,0) rotate(220deg)}92%{opacity:.7}100%{opacity:0;transform:translate3d(calc(var(--x)*-.4),112dvh,0) rotate(440deg)}}
+/* итоги броска — цвета от темы, не красный/зелёный */
+.cz-w .cz-t,.cz-am.cz-w{color:var(--ac)}
+.cz-l .cz-t,.cz-am.cz-l{color:rgba(var(--ac2-rgb),.6)}
+.cz-w .cz-b.big{box-shadow:0 0 0 .4rem rgba(var(--ac-rgb),.3),0 0 2rem rgba(var(--ac-rgb),.5)}
+.du-res.w,.duo.w b{color:var(--ac)}.du-res.l,.duo.l b{color:rgba(var(--ac2-rgb),.6)}#duh.w{border-color:var(--ac);color:var(--ac)}#duh.l{border-color:rgba(var(--ac2-rgb),.5);color:rgba(var(--ac2-rgb),.7)}
+
+/* баннер ивента */
+.evb{display:flex;align-items:center;gap:.75rem;width:100%;margin:.2rem 0 .7rem;padding:.6rem .9rem;border-radius:1.5rem;text-align:left;border:1.5px solid transparent;background:linear-gradient(rgba(var(--bg1-rgb),.92),rgba(var(--bg1-rgb),.92)) padding-box,linear-gradient(90deg,#d52d00,#ff9a56,#fff,#d162a4,#a30262) border-box;color:var(--tx)}
+.evf,.evfl{background:linear-gradient(#d52d00 0 20%,#ef7627 20% 40%,#fff 40% 60%,#d162a4 60% 80%,#a30262 80%)}
+.evf{flex:none;width:2.2rem;height:2.2rem;border-radius:.7rem}
+.evb span{flex:1;min-width:0;display:flex;flex-direction:column;gap:.15rem}
+.evb small{font:800 .55rem Onest,sans-serif;letter-spacing:.2em;color:var(--tx3)}
+.evb b{font:800 .8rem/1.15 Onest,sans-serif}
+.evb em{font:900 .68rem Unbounded,sans-serif;font-style:normal;color:var(--ac);white-space:nowrap}
+.evfl{height:.7rem;border-radius:.4rem;margin:.2rem 0 .8rem}
+.evr{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin:.7rem 0}
+.evr span{display:flex;flex-direction:column;align-items:center;gap:.25rem;padding:.8rem .4rem;border-radius:1.2rem;background:var(--glass);border:1px solid var(--line)}
+.evr img{height:4.4rem;object-fit:contain}.evr .evt{width:4.4rem;height:4.4rem;border-radius:1.1rem;background:linear-gradient(#d52d00 0 20%,#ef7627 20% 40%,#fff 40% 60%,#d162a4 60% 80%,#a30262 80%)}
+.evr b{font:900 .8rem Unbounded,sans-serif}.evr small{font:700 .7rem Onest,sans-serif;color:var(--tx2)}
+.evbar{height:.6rem;border-radius:.4rem;background:rgba(255,255,255,.1);overflow:hidden;margin:.3rem 0 .5rem}.evbar i{display:block;height:100%;border-radius:.4rem;background:linear-gradient(90deg,#d52d00,#ff9a56,#d162a4)}
