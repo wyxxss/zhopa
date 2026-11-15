@@ -73,13 +73,13 @@ function showCut(){cut=0;const o=$('#mro');o.className='cut';o.innerHTML='<canva
   if(fl){for(let i=0;i<7;i++){g.fillStyle=FL[i];g.globalAlpha=.55;g.fillRect(thx-190,thy-96+i*7,180,7)}g.globalAlpha=1;for(let i=0;i<2;i++)pts.push({x:thx-14+rr(-6,6),y:thy+10,vx:rr(-40,-10),vy:rr(60,160),l:.4,c:R()<.5?'#ffd54a':'#ff7a2a'})}
   spr(thim,thx,thy,150,thr);
   if(t>GRAB&&t<GRAB+.6){g.fillStyle='#ff6ab0';g.font='900 34px Unbounded,sans-serif';g.textAlign='center';g.globalAlpha=1-(t-GRAB)*1.6;g.fillText('!',thx+78,thy-120);g.globalAlpha=1}
-  if(t>GRAB+.3&&t<GRAB+1.9){g.save();g.font='900 15px Unbounded,sans-serif';g.textAlign='center';g.lineJoin='round';g.lineWidth=4;g.strokeStyle=OL;g.fillStyle='#ff5a82';g.globalAlpha=cl(0,1,Math.min((t-GRAB-.3)*5,(GRAB+1.9-t)*5));g.strokeText('ЭЙ!!',ax,ay-185);g.fillText('ЭЙ!!',ax,ay-185);g.restore()}
+  if(t>GRAB+.3&&t<GRAB+1.9){g.save();g.font='900 15px Unbounded,sans-serif';g.textAlign='center';g.lineJoin='round';g.lineWidth=4;g.strokeStyle=OL;g.fillStyle='#ff5a82';g.globalAlpha=cl(0,1,Math.min((t-GRAB-.3)*5,(GRAB+1.9-t)*5));g.strokeText('вы шото ахуели',ax,ay-185);g.fillText('вы шото ахуели',ax,ay-185);g.restore()}
   if(t>GRAB&&t<GRAB+.8){const u=(t-GRAB)/.8,hx0=218,hy0=GY-215;g.save();g.globalAlpha=1-u;g.translate(hx0,hy0+u*40);g.rotate(u*.8);g.font='900 40px Onest,sans-serif';g.textAlign='center';g.fillStyle='#ff4f86';g.strokeStyle=OL;g.lineWidth=4;g.strokeText('💔',0,0);g.fillText('💔',0,0);g.restore()}
   for(const q of pts){q.x+=q.vx*dt;q.y+=q.vy*dt;q.l-=dt;g.globalAlpha=cl(0,1,q.l*3);g.fillStyle=q.c;g.fillRect(q.x-2.5,q.y-2.5,5,5)}g.globalAlpha=1;
   while(pts.length>80)pts.shift();
   g.restore();
   cap('Артём очень любил Голубую,',.3,2.7);cap('Артём очень любил Голубую,\nи запер её в клетке.',2.7,4.5);
-  cap('Но Кира и Мескалин\nукрали её!',GRAB+.1,8);
+  cap('Но Кира и Мескалин\nукрали её',GRAB+.1,8);
   if(t>7.9)for(let i=0;i<6;i++){g.fillStyle='rgba(255,255,255,.35)';const ly=rr(0,h),lw=rr(40,120);g.fillRect(rr(0,360),ly,lw,1.5)}
   if(t>7.6&&t<7.8){g.fillStyle='rgba(255,255,255,'+(.8*(7.8-t)/.2)+')';g.fillRect(0,0,360,h)}
   if(t>8.7){g.fillStyle='rgba(0,0,0,'+cl(0,1,(t-8.7)/.5)+')';g.fillRect(0,0,360,h)}
